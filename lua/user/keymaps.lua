@@ -72,7 +72,7 @@ k("n", "<C-s>", ":w<CR>", opts)
 k(
 	"n",
 	"<leader>f",
-	"<cmd>lua require'telescope.builtin'.find_files({hidden=true},require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+	"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false , hidden = true }))<cr>",
 	opts
 )
 k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
