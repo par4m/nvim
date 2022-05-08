@@ -56,7 +56,7 @@ k("v", "<A-j>", ":m .+1<CR>==", opts)
 k("v", "<A-k>", ":m .-2<CR>==", opts)
 
 -- Paste without Yank
-k("v", "p", '"_dP', opts)
+-- k("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
