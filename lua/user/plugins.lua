@@ -145,7 +145,6 @@ return packer.startup(function(use)
 	use({
 		"kyazdani42/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-		commit = "056fb8e",
 		config = function()
 			require("cfg.nvim-tree")
 		end,

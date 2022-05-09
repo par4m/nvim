@@ -3,20 +3,19 @@ if not status_ok then
   return
 end
 
-
-configs.setup {
-   ensure_installed = {
-            "java",
-            "kotlin",
-            "comment",
-            "bash",
-            "lua",
-            "python",
-            "json",
-            "latex",
-            "rust",
-            "toml",
-        },
+configs.setup({
+  ensure_installed = {
+    "java",
+    "kotlin",
+    "comment",
+    "bash",
+    "lua",
+    "python",
+    "json",
+    "latex",
+    "rust",
+    "toml",
+  },
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
   autopairs = {
@@ -27,9 +26,9 @@ configs.setup {
     disable = { "" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { "yaml" } },
-    context_commentstring = {
+  indent = { enable = true, disable = { "yaml", "python" } },
+  context_commentstring = {
     enable = true,
     enable_autocmd = false,
   },
-}
+})
