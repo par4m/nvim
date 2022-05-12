@@ -76,6 +76,7 @@ k(
 	opts
 )
 k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
+k("n", "<leader>cd", ":lua require'telescope'.extensions.zoxide.list{}<CR>", opts)
 
 -- Nvim tree
 

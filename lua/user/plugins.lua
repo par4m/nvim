@@ -105,6 +105,14 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		after = "null-ls.nvim",
+		config = function()
+			require("cfg.trouble")
+		end,
+	})
 	-----------------------------------------------------------------------------------------------------------
 
 	-- UI
@@ -159,6 +167,10 @@ return packer.startup(function(use)
 		end,
 	})
 
+	use({
+		"simrat39/symbols-outline.nvim",
+		cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
+	})
 	-- Statusline --
 	-- Feline --
 
@@ -241,6 +253,12 @@ return packer.startup(function(use)
 
 	use({
 		"jvgrootveld/telescope-zoxide",
+		requires = { "nvim-telescope/telescope.nvim" },
+		after = "telescope.nvim",
+	})
+
+	use({
+		"nvim-telescope/telescope-file-browser.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
 		after = "telescope.nvim",
 	})
@@ -341,6 +359,11 @@ return packer.startup(function(use)
 
 	-- unimpaired.vim: Pairs of handy bracket mappings
 	use({ "tpope/vim-unimpaired", event = "BufRead" })
+
+	use({
+		"tweekmonster/startuptime.vim",
+		cmd = "StartupTime",
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
