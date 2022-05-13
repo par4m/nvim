@@ -294,6 +294,11 @@ return packer.startup(function(use)
 		after = "nvim-treesitter",
 	})
 
+	use({
+		"windwp/nvim-ts-autotag",
+		after = "nvim-treesitter",
+	})
+
 	-- Terminal Integration
 	use({
 		"akinsho/nvim-toggleterm.lua",
@@ -365,6 +370,10 @@ return packer.startup(function(use)
 		cmd = "StartupTime",
 	})
 
+	use({
+		"ggandor/lightspeed.nvim",
+		event = "BufRead",
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
