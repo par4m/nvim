@@ -63,7 +63,10 @@ return packer.startup(function(use)
 
 	----------------------------------------------------------------------------------------------------------------
 
-	use({ "rafamadriz/friendly-snippets", event = "InsertEnter" }) -- a bunch of snippets to use
+	use({
+		"rafamadriz/friendly-snippets",
+		event = { "InsertCharPre", "InsertEnter" },
+	}) -- a bunch of snippets to use
 
 	-- cmp plugins
 	use({
@@ -160,8 +163,8 @@ return packer.startup(function(use)
 
 	use({ -- lua `fork` of vim-web-devicons for neovim
 		"kyazdani42/nvim-web-devicons",
-		after = "gruvbox-flat.nvim",
 		event = "BufRead",
+		after = "gruvbox-flat.nvim",
 		config = function()
 			require("cfg.icons")
 		end,
@@ -197,7 +200,7 @@ return packer.startup(function(use)
 	-- Bufferline
 	use({
 		"akinsho/bufferline.nvim",
-		after = "gruvbox-flat.nvim",
+		after = "nvim-web-devicons",
 		config = function()
 			require("cfg.bufferline")
 		end,
@@ -338,7 +341,8 @@ return packer.startup(function(use)
 	-- Terminal Integration
 	use({
 		"akinsho/nvim-toggleterm.lua",
-		event = { "BufRead", "BufNewFile" },
+		--  event = { "BufRead", "BufNewFile" },
+		cmd = "ToggleTerm",
 		config = function()
 			require("cfg.toggleterm")
 		end,
@@ -363,8 +367,9 @@ return packer.startup(function(use)
 	use({
 		"CRAG666/code_runner.nvim",
 		requires = "nvim-lua/plenary.nvim",
-		event = { "BufRead", "BufNewFile" },
-		cmd = { "RunCode" },
+		-- event = { "BufRead", "BufNewFile" },
+		cmd = { "RunCode", "RunFile", "RunProject", "RunClose" },
+		module_pattern = "Run*",
 		config = function()
 			require("cfg.code-runner")
 		end,
