@@ -83,11 +83,10 @@ k("n", "<leader>cd", ":lua require'telescope'.extensions.zoxide.list{}<CR>", opt
 k("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Bufdelete
-
 k("n", "<leader>q", ":Bdelete<cr>", opts)
 
 -- null ls formatting
-k("n", "<leader>l", ":Format<cr>", opts)
+k("n", "<leader>l", ":lua vim.lsp.buf.format({ async = true })<cr>", opts)
 
 -- Terminal --
 -- Better terminal navigation

@@ -14,8 +14,8 @@ require("themes.gruvbox-flat") -- change theme
 -- require "user.colorscheme" -- colorscheme protected call
 
 -- LSP and Completion --
-require("user.cmp") -- completion settings for nvim-cmp
-require("user.lsp") --include lsp directory under user, init.lua inside it will be run first
+-- require("user.cmp") -- completion settings for nvim-cmp
+-- require("user.lsp") --include lsp directory under user, init.lua inside it will be run first
 
 -- Plugin Configs --
 -- require "cfg.telescope" -- fuzzy finder

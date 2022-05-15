@@ -84,7 +84,8 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	-- vim.api.nvim_create_user_command("Format", vim.lsp.buf.format, {})
 	-- vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+	-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+	-- vim.api.nvim_create_user_command("Format", vim.lsp.buf.format, { async = true })
 end
 
 M.on_attach = function(client, bufnr)

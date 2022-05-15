@@ -63,33 +63,69 @@ return packer.startup(function(use)
 
 	----------------------------------------------------------------------------------------------------------------
 
+	use({ "rafamadriz/friendly-snippets", event = "InsertEnter" }) -- a bunch of snippets to use
+
 	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("hrsh7th/cmp-nvim-lua") -- nvim-cmp source for neovim Lua API.
+	use({
+		"hrsh7th/nvim-cmp",
+		after = "friendly-snippets",
+		config = function()
+			require("user.cmp")
+		end,
+	}) -- The completion plugin
+
+	use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" }) --snippet engine
+	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }) -- snippet completions
+	use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }) -- nvim-cmp source for neovim Lua API.
+
+	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }) -- nvim-cmp source for neovim builtin LSP client
+
+	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }) -- buffer completions
+
+	use({ "hrsh7th/cmp-path", after = "cmp-buffer" }) -- path completions
+
+	use({
+		"hrsh7th/cmp-cmdline",
+		event = "BufRead",
+	}) -- cmdline completions
+
+	--	use({"saadparwaiz1/cmp_luasnip"}) -- snippet completions
+	-- 	use({"hrsh7th/cmp-nvim-lua"}) -- nvim-cmp source for neovim Lua API.
 
 	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	-- use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" }) --snippet engine
+	-- use({ "rafamadriz/friendly-snippets", event = "InsertEnter" }) -- a bunch of snippets to use
 
 	-- LSP
 
-	use("hrsh7th/cmp-nvim-lsp") -- nvim-cmp source for neovim builtin LSP client
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	use("b0o/schemastore.nvim") -- JSON schemas for Neovim
+	-- 	use("hrsh7th/cmp-nvim-lsp") -- nvim-cmp source for neovim builtin LSP client
+	--	use("neovim/nvim-lspconfig") -- enable LSP
+	--
+
+	use({ "neovim/nvim-lspconfig", event = "BufRead" })
+	-- enable LSP
+	use({
+		"williamboman/nvim-lsp-installer",
+		after = "nvim-cmp",
+		config = function()
+			require("user.lsp.init")
+		end,
+	}) -- simple to use language server installer
+
+	-- 	use("neovim/nvim-lspconfig") -- enable LSP
+
+	use({
+		"b0o/schemastore.nvim",
+		event = "BufRead",
+	}) -- JSON schemas for Neovim
 	-- use "folke/trouble.nvim"
 	-- use "ray-x/navigator.lua"
 
 	-- null ls for formatting
 	use({ -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufRead", "BufNewFile" },
-		cmd = "Format",
-		after = "plenary.nvim",
+		--		event = { "BufRead", "BufNewFile" },
+		after = "nvim-lsp-installer",
 		config = function()
 			require("cfg.null-ls")
 		end,
@@ -272,7 +308,7 @@ return packer.startup(function(use)
 	use({
 		"windwp/nvim-autopairs",
 		after = "nvim-cmp",
-		event = { "BufRead", "BufNewFile" },
+		--		event = { "BufRead", "BufNewFile" },
 		config = function()
 			require("cfg.autopairs")
 		end,
