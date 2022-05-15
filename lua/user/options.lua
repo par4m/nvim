@@ -40,6 +40,7 @@ o.shortmess:append("c")
 o.fillchars = { eob = " " }
 o.laststatus = 3 -- global statusline
 o.belloff = all -- turn off flashing
+o.shadafile = "NONE"
 o.shadafile = ""
 -- o.fillchars = {
 -- vert = "| ", -- alternatives │
@@ -57,6 +58,7 @@ o.fillchars = {
 	eob = " ", -- suppress ~ at EndOfBuffer
 }
 vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd("set re=0")
 vim.cmd([[set iskeyword+=-]])
 -- vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 -- vim.cmd("autocmd VimEnter * setlocal formatoptions-=c formatoptions-=r formatoptions-=o")
@@ -64,10 +66,10 @@ vim.cmd([[au BufEnter * set fo-=c fo-=r fo-=o]]) -- Stop new line comments.
 
 -- Disable built in plugins
 local disabled_built_ins = {
-	--    "netrw",
-	--    "netrwPlugin",
-	--    "netrwSettings",
-	--    "netrwFileHandlers",
+	"netrw",
+	"netrwPlugin",
+	"netrwSettings",
+	"netrwFileHandlers",
 	"gzip",
 	"zip",
 	"zipPlugin",

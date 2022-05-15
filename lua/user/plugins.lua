@@ -68,6 +68,12 @@ return packer.startup(function(use)
 		event = { "InsertCharPre", "InsertEnter" },
 	}) -- a bunch of snippets to use
 
+	use({
+		"hrsh7th/cmp-cmdline",
+		after = "friendly-snippets",
+		-- event = "BufRead",
+	}) -- cmdline completions
+
 	-- cmp plugins
 	use({
 		"hrsh7th/nvim-cmp",
@@ -87,10 +93,10 @@ return packer.startup(function(use)
 
 	use({ "hrsh7th/cmp-path", after = "cmp-buffer" }) -- path completions
 
-	use({
-		"hrsh7th/cmp-cmdline",
-		event = "BufRead",
-	}) -- cmdline completions
+	-- use({
+	-- "hrsh7th/cmp-cmdline",
+	-- event = "BufRead",
+	-- }) -- cmdline completions
 
 	--	use({"saadparwaiz1/cmp_luasnip"}) -- snippet completions
 	-- 	use({"hrsh7th/cmp-nvim-lua"}) -- nvim-cmp source for neovim Lua API.
@@ -105,22 +111,34 @@ return packer.startup(function(use)
 	--	use("neovim/nvim-lspconfig") -- enable LSP
 	--
 
-	use({ "neovim/nvim-lspconfig", event = "BufRead" })
+	-- use({ "neovim/nvim-lspconfig", event = "BufRead" })
 	-- enable LSP
+	use({
+		"b0o/schemastore.nvim",
+		after = "nvim-cmp",
+	})
+
 	use({
 		"williamboman/nvim-lsp-installer",
 		after = "nvim-cmp",
 		config = function()
-			require("user.lsp.init")
+			require("user.lsp.lsp-installer")
 		end,
 	}) -- simple to use language server installer
 
+	use({
+		"neovim/nvim-lspconfig",
+		after = "nvim-lsp-installer",
+		config = function()
+			require("user.lsp.handlers").setup()
+		end,
+	})
 	-- 	use("neovim/nvim-lspconfig") -- enable LSP
 
-	use({
-		"b0o/schemastore.nvim",
-		event = "BufRead",
-	}) -- JSON schemas for Neovim
+	-- use({
+	-- 	"b0o/schemastore.nvim",
+	-- 	event = "BufRead",
+	-- }) -- JSON schemas for Neovim
 	-- use "folke/trouble.nvim"
 	-- use "ray-x/navigator.lua"
 
@@ -128,7 +146,7 @@ return packer.startup(function(use)
 	use({ -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 		"jose-elias-alvarez/null-ls.nvim",
 		--		event = { "BufRead", "BufNewFile" },
-		after = "nvim-lsp-installer",
+		after = "nvim-lspconfig",
 		config = function()
 			require("cfg.null-ls")
 		end,
@@ -242,13 +260,16 @@ return packer.startup(function(use)
 	-----------------------------------------------------------------------------------------------------------
 
 	-- UX
-	use("antoinemadec/FixCursorHold.nvim")
+	use({
+		"antoinemadec/FixCursorHold.nvim",
+		after = "nvim-lspconfig",
+	})
 	use("nathom/filetype.nvim") -- A faster version of filetype.vim
 	use("lewis6991/impatient.nvim")
 
 	use({
 		"karb94/neoscroll.nvim",
-		event = { "BufRead", "BufNewFile" },
+		event = "WinScrolled",
 		config = function()
 			require("cfg.neoscroll")
 		end,
@@ -264,7 +285,7 @@ return packer.startup(function(use)
 	-- lua with packer.nvim
 	use({
 		"max397574/better-escape.nvim",
-		event = "BufRead",
+		event = "InsertCharPre",
 		config = function()
 			require("cfg.better-escape")
 		end,
@@ -321,7 +342,7 @@ return packer.startup(function(use)
 	use({
 		"numToStr/Comment.nvim",
 		module = "Comment",
-		keys = { "gcc", "gc" },
+		keys = { "gcc", "gc", "gb" },
 		config = function()
 			require("cfg.comment")
 		end,
@@ -413,7 +434,8 @@ return packer.startup(function(use)
 
 	use({
 		"ggandor/lightspeed.nvim",
-		event = "BufRead",
+		keys = { "s", "S", "f", "F", "t", "T" },
+		--	event = "BufRead",
 	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
