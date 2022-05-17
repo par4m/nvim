@@ -307,7 +307,7 @@ return packer.startup(function(use)
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		requires = { "nvim-telescope/telescope.nvim" },
-		after = "telescope.nvim",
+		-- after = "telescope.nvim",
 		run = "make",
 	})
 
