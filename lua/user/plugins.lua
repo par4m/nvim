@@ -240,6 +240,15 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"andreadev-it/Shade.nvim", -- fork of sunjon/Shade with disabled filetypes
+		-- "sunjon/Shade.nvim",
+		after = "bufferline.nvim",
+		config = function()
+			require("cfg.shade")
+		end,
+	})
+
+	use({
 		"simrat39/symbols-outline.nvim",
 		cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
 	})
