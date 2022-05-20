@@ -24,12 +24,12 @@ end
 -- augroup end
 -- ]]
 
-local group = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-	command = "source <afile> | PackerSync ",
-	pattern = "plugins.lua",
-	group = group,
-})
+-- local group = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- 	command = "source <afile> | PackerSync ",
+-- 	pattern = "plugins.lua",
+-- 	group = group,
+-- })
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -61,84 +61,23 @@ return packer.startup(function(use)
 		after = "plenary.nvim",
 	})
 
-	----------------------------------------------------------------------------------------------------------------
-
 	use({
 		"rafamadriz/friendly-snippets",
-		event = { "InsertCharPre", "InsertEnter" },
+		event = "InsertEnter",
 	}) -- a bunch of snippets to use
 
-	use({
-		"hrsh7th/cmp-cmdline",
-		after = "friendly-snippets",
-		-- event = "BufRead",
-	}) -- cmdline completions
+	-- LSP Start
+	use({ "hrsh7th/cmp-nvim-lsp", after = "friendly-snippets" }) -- nvim-cmp source for neovim builtin LSP client
 
-	-- cmp plugins
-	use({
-		"hrsh7th/nvim-cmp",
-		after = "friendly-snippets",
-		config = function()
-			require("user.cmp")
-		end,
-	}) -- The completion plugin
-
-	use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" }) --snippet engine
-	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }) -- snippet completions
-	use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }) -- nvim-cmp source for neovim Lua API.
-
-	use({ "hrsh7th/cmp-nvim-lsp", after = "cmp-nvim-lua" }) -- nvim-cmp source for neovim builtin LSP client
-
-	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lsp" }) -- buffer completions
-
-	use({ "hrsh7th/cmp-path", after = "cmp-buffer" }) -- path completions
-
-	-- use({
-	-- "hrsh7th/cmp-cmdline",
-	-- event = "BufRead",
-	-- }) -- cmdline completions
-
-	--	use({"saadparwaiz1/cmp_luasnip"}) -- snippet completions
-	-- 	use({"hrsh7th/cmp-nvim-lua"}) -- nvim-cmp source for neovim Lua API.
-
-	-- snippets
-	-- use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" }) --snippet engine
-	-- use({ "rafamadriz/friendly-snippets", event = "InsertEnter" }) -- a bunch of snippets to use
-
-	-- LSP
-
-	-- 	use("hrsh7th/cmp-nvim-lsp") -- nvim-cmp source for neovim builtin LSP client
-	--	use("neovim/nvim-lspconfig") -- enable LSP
-	--
-
-	-- use({ "neovim/nvim-lspconfig", event = "BufRead" })
-	-- enable LSP
 	use({
 		"b0o/schemastore.nvim",
-		after = "nvim-cmp",
+		after = "cmp-nvim-lsp",
 	})
-	--
-	-- use({
-	-- 	"williamboman/nvim-lsp-installer",
-	-- 	after = "nvim-cmp",
-	-- 	config = function()
-	-- 		require("user.lsp.lsp-installer")
-	-- 	end,
-	-- }) -- simple to use language server installer
-	--
-	-- use({
-	-- 	"neovim/nvim-lspconfig",
-	-- 	after = "nvim-lsp-installer",
-	-- 	config = function()
-	-- 		require("user.lsp.handlers").setup()
-	-- 	end,
-	-- })
-	--
 
 	use({
 		{
 			"williamboman/nvim-lsp-installer",
-			after = "cmp-path",
+			after = "schemastore.nvim",
 		},
 		{
 			"neovim/nvim-lspconfig",
@@ -148,22 +87,52 @@ return packer.startup(function(use)
 			after = "nvim-lsp-installer",
 		},
 	})
-	-- 	use("neovim/nvim-lspconfig") -- enable LSP
 
-	-- use({
-	-- 	"b0o/schemastore.nvim",
-	-- 	event = "BufRead",
-	-- }) -- JSON schemas for Neovim
-	-- use "folke/trouble.nvim"
-	-- use "ray-x/navigator.lua"
+	use({
+		"hrsh7th/cmp-cmdline",
+		after = "nvim-lspconfig",
+	}) -- cmdline completions
 
+	use({
+		"hrsh7th/nvim-cmp",
+		after = "cmp-cmdline",
+		config = function()
+			require("user.cmp")
+		end,
+	}) -- The completion plugin
+
+	use({ "L3MON4D3/LuaSnip", wants = "friendly-snippets", after = "nvim-cmp" })
+	use({ "saadparwaiz1/cmp_luasnip", after = "LuaSnip" }) -- snippet completions
+	use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }) -- nvim-cmp source for neovim Lua API.
+	use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" }) -- buffer completions
+	use({ "hrsh7th/cmp-path", after = "cmp-buffer" }) -- path completions
+
+	-- LSP End
+	--
 	-- null ls for formatting
 	use({ -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 		"jose-elias-alvarez/null-ls.nvim",
-		--		event = { "BufRead", "BufNewFile" },
-		after = "nvim-lspconfig",
+		after = "cmp-path",
 		config = function()
 			require("cfg.null-ls")
+		end,
+	})
+
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		after = "null-ls.nvim",
+		config = function()
+			require("cfg.trouble")
+		end,
+	})
+
+	-- Autopairs
+	use({
+		"windwp/nvim-autopairs",
+		after = "trouble.nvim",
+		config = function()
+			require("cfg.autopairs")
 		end,
 	})
 
@@ -177,22 +146,19 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 
+	--  nvim-ts-context-commentstring
 	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-		after = "null-ls.nvim",
-		config = function()
-			require("cfg.trouble")
-		end,
+		"JoosepAlviste/nvim-ts-context-commentstring",
+		after = "nvim-treesitter",
 	})
-	-----------------------------------------------------------------------------------------------------------
+
+	use({
+		"windwp/nvim-ts-autotag",
+		after = "nvim-treesitter",
+	})
 
 	-- UI
 	use("eddyekofo94/gruvbox-flat.nvim") --colorscheme
-	-- use("sainnhe/gruvbox-material") --colorscheme
-	-- use("gruvbox-community/gruvbox") --colorscheme
-
-	-- use 'rrethy/vim-illuminate'  automatically highlighting other uses of the word under the cursor.
 
 	use({ -- lua `fork` of vim-web-devicons for neovim
 		"kyazdani42/nvim-web-devicons",
@@ -200,6 +166,43 @@ return packer.startup(function(use)
 		after = "gruvbox-flat.nvim",
 		config = function()
 			require("cfg.icons")
+		end,
+	})
+
+	-- Bufferline
+	use({
+		"akinsho/bufferline.nvim",
+		after = "nvim-web-devicons",
+		config = function()
+			require("cfg.bufferline")
+		end,
+	})
+
+	-- LuaLine --
+	use({
+		"nvim-lualine/lualine.nvim",
+		after = "bufferline.nvim",
+		config = function()
+			require("cfg.lualine")
+		end,
+	})
+
+	use({
+		"andreadev-it/Shade.nvim", -- fork of sunjon/Shade with disabled filetypes
+		-- "sunjon/Shade.nvim",
+		after = "lualine.nvim",
+		config = function()
+			require("cfg.shade")
+		end,
+	})
+
+	-- IndentLine
+	use({
+		"lukas-reineke/indent-blankline.nvim",
+		-- event = "BufRead",
+		after = "Shade.nvim",
+		config = function()
+			require("cfg.indent-blankline")
 		end,
 	})
 
@@ -230,60 +233,14 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Bufferline
-	use({
-		"akinsho/bufferline.nvim",
-		after = "nvim-web-devicons",
-		config = function()
-			require("cfg.bufferline")
-		end,
-	})
-
-	use({
-		"andreadev-it/Shade.nvim", -- fork of sunjon/Shade with disabled filetypes
-		-- "sunjon/Shade.nvim",
-		after = "bufferline.nvim",
-		config = function()
-			require("cfg.shade")
-		end,
-	})
-
 	use({
 		"simrat39/symbols-outline.nvim",
 		cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
 	})
-	-- Statusline --
-	-- Feline --
 
-	-- use({
-	-- 	"feline-nvim/feline.nvim",
-	-- 	after = "nvim-web-devicons",
-	-- 	config = function()
-	-- 		require("cfg.feline")
-	-- 	end,
-	-- })
-	-- LuaLine --
-	use({
-		"nvim-lualine/lualine.nvim",
-		after = "nvim-web-devicons",
-		config = function()
-			require("cfg.lualine")
-		end,
-	})
-
-	--
-
-	-- IndentLine
-	use({
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
-		config = function()
-			require("cfg.indent-blankline")
-		end,
-	})
 	-----------------------------------------------------------------------------------------------------------
-
 	-- UX
+
 	use({
 		"antoinemadec/FixCursorHold.nvim",
 		after = "nvim-lspconfig",
@@ -306,7 +263,6 @@ return packer.startup(function(use)
 	})
 
 	-- better escape, without delay
-	-- lua with packer.nvim
 	use({
 		"max397574/better-escape.nvim",
 		event = "InsertCharPre",
@@ -314,6 +270,7 @@ return packer.startup(function(use)
 			require("cfg.better-escape")
 		end,
 	})
+
 	--------------------------------------------------------------------------------------------------------------
 	-- Misc
 	-- Telescope --
@@ -349,17 +306,8 @@ return packer.startup(function(use)
 
 	use({
 		"benfowler/telescope-luasnip.nvim",
-		requires = { "nvim-telescope/telescope.nvim", after = "telescope.nvim" },
-	})
-
-	-- Autopairs
-	use({
-		"windwp/nvim-autopairs",
-		after = "nvim-cmp",
-		--		event = { "BufRead", "BufNewFile" },
-		config = function()
-			require("cfg.autopairs")
-		end,
+		requires = { "nvim-telescope/telescope.nvim" },
+		after = "telescope.nvim",
 	})
 
 	-- Comments
@@ -372,21 +320,9 @@ return packer.startup(function(use)
 		end,
 	})
 
-	--  nvim-ts-context-commentstring
-	use({
-		"JoosepAlviste/nvim-ts-context-commentstring",
-		after = "nvim-treesitter",
-	})
-
-	use({
-		"windwp/nvim-ts-autotag",
-		after = "nvim-treesitter",
-	})
-
 	-- Terminal Integration
 	use({
 		"akinsho/nvim-toggleterm.lua",
-		--  event = { "BufRead", "BufNewFile" },
 		cmd = "ToggleTerm",
 		config = function()
 			require("cfg.toggleterm")
@@ -412,7 +348,6 @@ return packer.startup(function(use)
 	use({
 		"CRAG666/code_runner.nvim",
 		requires = "nvim-lua/plenary.nvim",
-		-- event = { "BufRead", "BufNewFile" },
 		cmd = { "RunCode", "RunFile", "RunProject", "RunClose" },
 		module_pattern = "Run*",
 		config = function()
@@ -432,6 +367,7 @@ return packer.startup(function(use)
 			require("cfg.truezen")
 		end,
 	})
+
 	use({ -- Twilight
 		"folke/twilight.nvim",
 		cmd = {
@@ -445,7 +381,6 @@ return packer.startup(function(use)
 	})
 
 	-- vim-surround: Delete/change/add parentheses/quotes/XML-tags/much more with ease
-
 	use({ "tpope/vim-surround", event = "BufRead" })
 
 	-- unimpaired.vim: Pairs of handy bracket mappings
@@ -459,7 +394,6 @@ return packer.startup(function(use)
 	use({
 		"ggandor/lightspeed.nvim",
 		keys = { "s", "S", "f", "F", "t", "T" },
-		--	event = "BufRead",
 	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

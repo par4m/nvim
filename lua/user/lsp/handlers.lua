@@ -73,7 +73,7 @@ local function lsp_keymaps(bufnr)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap(
+	vim.api.nvim_buf_set_keymap( -- Show Diagnostic in float window (gl)
 		bufnr,
 		"n",
 		"gl",
@@ -97,20 +97,21 @@ M.on_attach = function(client, bufnr)
 end
 
 -- Show line diagnostics automatically in hover window
-vim.api.nvim_create_autocmd("CursorHold", {
-	buffer = bufnr,
-	callback = function()
-		local opts = {
-			focusable = false,
-			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-			border = "rounded",
-			source = "always",
-			prefix = "",
-			--    scope = 'cursor',
-		}
-		vim.diagnostic.open_float(nil, opts)
-	end,
-})
+
+-- vim.api.nvim_create_autocmd("CursorHold", {
+-- 	buffer = bufnr,
+-- 	callback = function()
+-- 		local opts = {
+-- 			focusable = false,
+-- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+-- 			border = "rounded",
+-- 			source = "always",
+-- 			prefix = "",
+-- 			--    scope = 'cursor',
+-- 		}
+-- 		vim.diagnostic.open_float(nil, opts)
+-- 	end,
+-- })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
