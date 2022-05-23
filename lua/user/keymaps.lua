@@ -69,14 +69,14 @@ k("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 k("n", "<C-s>", ":w<CR>", opts)
 
 -- Telescope --
-k(
-  "n",
-  "<leader>f",
-  "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false , hidden = true }))<cr>",
-  opts
-)
 k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
-k("n", "<leader>cd", ":lua require'telescope'.extensions.zoxide.list{}<CR>", opts)
+k("n", "<leader>cd", ":Telescope zoxide list<CR>", opts)
+k("n", "<leader>f", ":Telescope find_files theme=dropdown previewer=false hidden=true<CR>", opts)
+k("n", "<leader>y", ":Telescope frecency frecency<CR>", opts)
+k("n", "<leader>s", ":Telescope luasnip luasnip<CR>", opts)
+k("n", "<leader>p", ":Telescope project project<CR>", opts)
+k("n", "<leader>r", ":Telescope repo list<CR>", opts)
+k("n", "<leader>bf", ":Telescope file_browser file_browser<CR>", opts)
 
 -- Nvim tree
 

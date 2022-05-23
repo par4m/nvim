@@ -16,6 +16,7 @@ telescope.setup({
 			"--column",
 			"--smart-case",
 			"--hidden",
+			"--trim",
 			"--glob=!.git/",
 		},
 		-- prompt_prefix = " ",
@@ -40,10 +41,9 @@ telescope.setup({
 			height = 0.80,
 			preview_cutoff = 120,
 		},
-
-		file_sorter = require("telescope.sorters").get_fuzzy_file,
+		-- file_sorter = require("telescope.sorters").get_fuzzy_file,
 		file_ignore_patterns = { "node_modules", "git", "fonts" },
-		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+		-- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		path_display = { "truncate" },
 		winblend = 0,
 		border = {},
@@ -51,11 +51,11 @@ telescope.setup({
 		color_devicons = true,
 		use_less = true,
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-		-- Developer configurations: Not meant for general override
-		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+		-- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+		-- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+		-- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+		-- -- Developer configurations: Not meant for general override
+		-- buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 
 		mappings = {
 			i = {
@@ -123,13 +123,9 @@ telescope.setup({
 		},
 	},
 	pickers = {
-		-- Default configuration for builtin pickers goes here:
-		-- picker_name = {
-		--   picker_config_key = value,
-		--   ...
-		-- }
-		-- Now the picker_config_key will be applied every time you call this
-		-- builtin picker
+		find_files = {
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+		},
 	},
 	extensions = {
 		-- media_files = {
@@ -154,16 +150,11 @@ telescope.setup({
 	},
 })
 
--- To get fzf loaded and working with telescope, you need to call
--- load_extension, somewhere after setup function:
 -- You may skip explicitly loading extensions (they will then be lazy-loaded), but tab completions will not be available right away.
-telescope.load_extension("fzf")
--- telescope.load_extension('zoxide')
--- telescope.load_extension('luasnip')
--- telescope.load_extension('media_files')  -- only works on linux
-
--- Set Keymaps --
-
--- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
--- k("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
--- k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
+-- telescope.load_extension("fzf")
+-- telescope.load_extension("zoxide")
+-- telescope.load_extension("luasnip")
+-- telescope.load_extension("media_files") -- only works on linux
+-- telescope.load_extension("frecency") -- only works on linux
+-- telescope.load_extension("file_browser") -- only works on linux
+--
