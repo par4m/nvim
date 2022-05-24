@@ -70,7 +70,7 @@ k("n", "<C-s>", ":w<CR>", opts)
 
 -- Telescope --
 k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
-k("n", "<leader>cd", ":Telescope zoxide list<CR>", opts)
+k("n", "<leader>'", ":Telescope zoxide list<CR>", opts)
 k("n", "<leader>f", ":Telescope find_files theme=dropdown previewer=false hidden=true<CR>", opts)
 k("n", "<leader>y", ":Telescope frecency frecency<CR>", opts)
 k("n", "<leader>s", ":Telescope luasnip luasnip<CR>", opts)
