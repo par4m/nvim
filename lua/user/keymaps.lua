@@ -100,3 +100,7 @@ k("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 k("n", "<F7>", ":w<CR>:VimuxPromptCommand<cr>", opts)
 -- use space + b to run last command
 k("n", "<leader>b", ":w<CR>:VimuxRunLastCommand<cr>", opts)
+
+-- Duck --
+k("n", "<leader>;", ':lua require("duck").hatch()<CR>', opts)
+k("n", "<leader>.", ':lua require("duck").cook()<CR>', opts)

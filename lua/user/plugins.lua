@@ -439,6 +439,19 @@ return packer.startup({
 			"ggandor/lightspeed.nvim",
 			keys = { "s", "S", "f", "F", "t", "T" },
 		})
+
+		use({
+			"tamton-aquib/duck.nvim",
+			event = "CursorHold",
+		})
+
+		use({
+			"folke/which-key.nvim",
+			event = "CursorHold",
+			config = function()
+				require("cfg.whichkey")
+			end,
+		})
 	end,
 	config = {
 		snapshot_path = util.join_paths(fn.stdpath("config"), "snapshots"),
