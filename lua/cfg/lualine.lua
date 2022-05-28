@@ -17,7 +17,7 @@ require("lualine").setup({
 		theme = custom_lualine,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "NvimTree", "TelescopePrompt", "packer" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "packer", "TelescopePrompt" },
 		always_divide_middle = false,
 		globalstatus = false,
 	},

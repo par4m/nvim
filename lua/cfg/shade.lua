@@ -14,5 +14,6 @@ require("shade").setup({
 		"packer",
 		"Outline",
 		"toggleterm",
+		"harpoon",
 	},
 })

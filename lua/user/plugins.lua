@@ -109,26 +109,42 @@ return packer.startup({
 		use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" }) -- buffer completions
 		use({ "hrsh7th/cmp-path", after = "cmp-buffer" }) -- path completions
 
-		-- LSP End
-		--
-		-- null ls for formatting
-		use({ -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-			"jose-elias-alvarez/null-ls.nvim",
+		use({
+			"ray-x/lsp_signature.nvim",
 			after = "cmp-path",
 			config = function()
-				require("cfg.null-ls")
+				require("cfg.signature")
 			end,
 		})
 
 		use({
 			"folke/trouble.nvim",
 			requires = "kyazdani42/nvim-web-devicons",
-			after = "null-ls.nvim",
+			after = "lsp_signature.nvim",
 			config = function()
 				require("cfg.trouble")
 			end,
 		})
 
+		use({
+			"tami5/lspsaga.nvim",
+			after = "trouble.nvim",
+			config = function()
+				require("cfg.saga")
+			end,
+		})
+
+		-- LSP End
+		--
+
+		-- null ls for formatting
+		use({ -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+			"jose-elias-alvarez/null-ls.nvim",
+			after = "trouble.nvim",
+			config = function()
+				require("cfg.null-ls")
+			end,
+		})
 		-- Autopairs
 		use({
 			"windwp/nvim-autopairs",
@@ -240,7 +256,10 @@ return packer.startup({
 
 		use({
 			"simrat39/symbols-outline.nvim",
-			cmd = { "SymbolsOutline", "SymbolsOutlineOpen", "SymbolsOutlineClose" },
+			after = "trouble.nvim",
+			config = function()
+				require("cfg.outline")
+			end,
 		})
 
 		-----------------------------------------------------------------------------------------------------------
@@ -392,11 +411,21 @@ return packer.startup({
 		use({
 			"CRAG666/code_runner.nvim",
 			requires = "nvim-lua/plenary.nvim",
-			cmd = { "RunCode", "RunFile", "RunProject", "RunClose" },
+			event = "CursorHold",
+			-- cmd = { "RunCode", "RunFile", "RunProject", "RunClose" },
 			--	module_pattern = "Run*",
 			config = function()
 				require("cfg.code-runner")
 			end,
+		})
+
+		use({
+			"michaelb/sniprun",
+			after = "code_runner.nvim",
+			config = function()
+				require("cfg.sniprun")
+			end,
+			run = "bash ./install.sh",
 		})
 
 		-- Twilight and True Zen
@@ -443,6 +472,32 @@ return packer.startup({
 		use({
 			"tamton-aquib/duck.nvim",
 			event = "CursorHold",
+		})
+
+		use({
+			"ThePrimeagen/harpoon",
+			event = "CursorHold",
+			config = function()
+				require("cfg.harpoon")
+			end,
+		})
+
+		use({
+			"nvim-pack/nvim-spectre",
+			event = "CursorHold",
+			config = function()
+				require("cfg.spectre")
+			end,
+		})
+
+		use({
+			"mfussenegger/nvim-dap",
+			after = "nvim-spectre",
+		})
+
+		use({
+			"mfussenegger/nvim-dap-python",
+			after = "nvim-dap",
 		})
 
 		use({

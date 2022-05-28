@@ -69,24 +69,24 @@ k("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 k("n", "<C-s>", ":w<CR>", opts)
 
 -- Telescope --
-k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
-k("n", "<leader>'", ":Telescope zoxide list<CR>", opts)
-k("n", "<leader>f", ":Telescope find_files theme=dropdown previewer=false hidden=true<CR>", opts)
-k("n", "<leader>y", ":Telescope frecency frecency<CR>", opts)
-k("n", "<leader>s", ":Telescope luasnip luasnip<CR>", opts)
-k("n", "<leader>p", ":Telescope project project<CR>", opts)
-k("n", "<leader>r", ":Telescope repo list<CR>", opts)
-k("n", "<leader>bf", ":Telescope file_browser file_browser<CR>", opts)
+-- k("n", "<c-t>", "<cmd>lua require'telescope.builtin'.live_grep()<cr>", opts)
+-- k("n", "<leader>'", ":Telescope zoxide list<CR>", opts)
+-- k("n", "<leader>f", ":Telescope find_files theme=dropdown previewer=false hidden=true<CR>", opts)
+-- k("n", "<leader>y", ":Telescope frecency frecency<CR>", opts)
+-- k("n", "<leader>s", ":Telescope luasnip luasnip<CR>", opts)
+-- k("n", "<leader>p", ":Telescope project project<CR>", opts)
+-- k("n", "<leader>r", ":Telescope repo list<CR>", opts)
+-- k("n", "<leader>bf", ":Telescope file_browser file_browser<CR>", opts)
 
 -- Nvim tree
 
-k("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+-- k("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Bufdelete
-k("n", "<leader>q", ":Bdelete<cr>", opts)
+-- k("n", "<leader>q", ":Bdelete<cr>", opts)
 
 -- null ls formatting
-k("n", "<leader>l", ":lua vim.lsp.buf.format({ async = true })<cr>", opts)
+-- k("n", "<leader>l", ":lua vim.lsp.buf.format({ async = true })<cr>", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -97,10 +97,14 @@ k("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Vimux --
 -- Use F7 to run prompt command
-k("n", "<F7>", ":w<CR>:VimuxPromptCommand<cr>", opts)
+-- k("n", "<F7>", ":w<CR>:VimuxPromptCommand<cr>", opts)
 -- use space + b to run last command
 k("n", "<leader>b", ":w<CR>:VimuxRunLastCommand<cr>", opts)
 
 -- Duck --
 k("n", "<leader>;", ':lua require("duck").hatch()<CR>', opts)
 k("n", "<leader>.", ':lua require("duck").cook()<CR>', opts)
+
+-- LspSaga Scroll --
+k("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+k("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
