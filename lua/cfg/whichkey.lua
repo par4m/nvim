@@ -119,7 +119,7 @@ local mappings = {
 	["q"] = { "<cmd>Bdelete<CR>", "Buffer Delete" },
 	["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
 	["P"] = { "<cmd>Telescope project project <cr>", "Telescope: Projects" },
-	["R"] = { "<cmd>Telescope repo list<cr>", "Telescope: Projects" },
+	["R"] = { "<cmd>Telescope repo list<cr>", "Telescope: Git Repos" },
 	["z"] = { "<cmd>Telescope zoxide list<cr>", "Telescope: Zoxide" },
 
 	p = {
@@ -228,14 +228,16 @@ local mappings = {
 		i = { ":LspInfo<cr>", "Connected Language Servers" },
 		-- k = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
 		-- K = { "<cmd>Lspsaga hover_doc<cr>", "Hover Commands" },
-		l = {
-			"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
-			"List Workspace Folders",
-		},
+		-- l = {
+		-- 	"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
+		-- 	"List Workspace Folders",
+		-- },
 		-- Trouble --
-		t = { "<cmd>Trouble lsp_type_definitions<cr>", "Trouble: Type Definition" },
-		w = { "<cmd>Trouble workspace_diagnostics<cr>", "Trouble: Workspace Diagnostics" },
-		m = { "<cmd>Trouble document_diagnostics<cr>", "Trouble: Document Diagnostics" },
+		t = { "<cmd>TroubleToggle lsp_type_definitions<cr>", "Trouble: Type Definition" },
+		w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Trouble: Workspace Diagnostics" },
+		m = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble: Document Diagnostics" },
+		l = { "<cmd>TroubleToggle loclist<cr>", "Trouble: Location List" },
+		q = { "<cmd>TroubleToggle quickfix<cr>", "Trouble: Quickfix" },
 		-- d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
 		-- D = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go To Declaration" },
 		-- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },

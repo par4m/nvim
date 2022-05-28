@@ -501,6 +501,11 @@ return packer.startup({
 		})
 
 		use({
+			"folke/lsp-colors.nvim",
+			after = "nvim-dap",
+		})
+
+		use({
 			"folke/which-key.nvim",
 			event = "CursorHold",
 			config = function()
