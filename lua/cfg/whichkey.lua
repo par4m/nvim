@@ -121,6 +121,10 @@ local mappings = {
 	["P"] = { "<cmd>Telescope project project <cr>", "Telescope: Projects" },
 	["R"] = { "<cmd>Telescope repo list<cr>", "Telescope: Git Repos" },
 	["z"] = { "<cmd>Telescope zoxide list<cr>", "Telescope: Zoxide" },
+	["i"] = { "<cmd>IndentBlanklineToggle<cr>", "Indent Lines Toggle" },
+	["cd"] = { "<cmd>cd %:p:h<cr>", "CD to Buf Dir" },
+	[";"] = { '<cmd>lua require("duck").hatch()<cr>', "Duck: Hatch" },
+	["."] = { '<cmd>lua require("duck").cook()<cr>', "Duck: Cook" },
 
 	p = {
 		name = "Packer",

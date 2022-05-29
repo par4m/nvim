@@ -46,4 +46,5 @@ lspsaga.setup({ -- defaults ...
 	diagnostic_prefix_format = "%d. ",
 	diagnostic_message_format = "%m %c",
 	highlight_prefix = false,
+	use_diagnostic_virtual_text = false,
 })

@@ -219,6 +219,7 @@ return packer.startup({
 		use({
 			"lukas-reineke/indent-blankline.nvim",
 			-- event = "BufRead",
+			-- cmd = "IndentBlanklineToggle",
 			event = "CursorHold",
 			config = function()
 				require("cfg.indent-blankline")
