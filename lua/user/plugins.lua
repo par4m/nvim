@@ -507,6 +507,14 @@ return packer.startup({
 		})
 
 		use({
+			"iamcco/markdown-preview.nvim",
+			run = function()
+				vim.fn["mkdp#util#install"]()
+			end,
+			event = "CursorHold",
+		})
+
+		use({
 			"folke/which-key.nvim",
 			event = "CursorHold",
 			config = function()
