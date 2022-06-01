@@ -15,5 +15,6 @@ require("shade").setup({
 		"Outline",
 		"toggleterm",
 		"harpoon",
+		"lsp-installer",
 	},
 })

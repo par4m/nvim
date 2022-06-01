@@ -273,11 +273,24 @@ return packer.startup({
 		use("nathom/filetype.nvim") -- A faster version of filetype.vim
 		use("lewis6991/impatient.nvim")
 
+		-- use({
+		-- 	"karb94/neoscroll.nvim",
+		-- 	event = "WinScrolled",
+		-- 	config = function()
+		-- 		require("cfg.neoscroll")
+		-- 	end,
+		-- })
+
+		-- use({
+		-- 	"psliwka/vim-smoothie",
+		-- 	event = "WinScrolled",
+		-- })
+
 		use({
-			"karb94/neoscroll.nvim",
+			"declancm/cinnamon.nvim",
 			event = "WinScrolled",
 			config = function()
-				require("cfg.neoscroll")
+				require("cfg.cinnamon")
 			end,
 		})
 
