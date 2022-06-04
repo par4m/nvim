@@ -270,6 +270,7 @@ return packer.startup({
 			"antoinemadec/FixCursorHold.nvim",
 			after = "nvim-lspconfig",
 		})
+
 		use("nathom/filetype.nvim") -- A faster version of filetype.vim
 		use("lewis6991/impatient.nvim")
 
@@ -281,18 +282,18 @@ return packer.startup({
 		-- 	end,
 		-- })
 
-		-- use({
-		-- 	"psliwka/vim-smoothie",
-		-- 	event = "WinScrolled",
-		-- })
-
 		use({
-			"declancm/cinnamon.nvim",
+			"psliwka/vim-smoothie",
 			event = "WinScrolled",
-			config = function()
-				require("cfg.cinnamon")
-			end,
 		})
+
+		-- use({
+		-- 	"declancm/cinnamon.nvim",
+		-- 	event = "WinScrolled",
+		-- 	config = function()
+		-- 		require("cfg.cinnamon")
+		-- 	end,
+		-- })
 
 		-- Keep window layout when buffer gets deleted
 		use({

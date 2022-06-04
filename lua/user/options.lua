@@ -1,6 +1,7 @@
 -- :help options
 o = vim.opt
--- o.lazyredraw = true
+o.lazyredraw = true
+o.redrawtime = 1000
 o.backup = false -- creates a backup file
 o.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 o.cmdheight = 1 -- more space in the neovim command line for displaying messages
