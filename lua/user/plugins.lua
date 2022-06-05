@@ -118,17 +118,8 @@ return packer.startup({
 		})
 
 		use({
-			"folke/trouble.nvim",
-			requires = "kyazdani42/nvim-web-devicons",
-			after = "lsp_signature.nvim",
-			config = function()
-				require("cfg.trouble")
-			end,
-		})
-
-		use({
 			"tami5/lspsaga.nvim",
-			after = "trouble.nvim",
+			after = "lsp_signature.nvim",
 			config = function()
 				require("cfg.saga")
 			end,
@@ -140,7 +131,7 @@ return packer.startup({
 		-- null ls for formatting
 		use({ -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 			"jose-elias-alvarez/null-ls.nvim",
-			after = "trouble.nvim",
+			after = "lspsaga.nvim",
 			config = function()
 				require("cfg.null-ls")
 			end,
@@ -206,6 +197,15 @@ return packer.startup({
 		})
 
 		use({
+			"folke/trouble.nvim",
+			requires = "kyazdani42/nvim-web-devicons",
+			after = "lualine.nvim",
+			config = function()
+				require("cfg.trouble")
+			end,
+		})
+
+		use({
 			"andreadev-it/Shade.nvim", -- fork of sunjon/Shade with disabled filetypes
 			-- "sunjon/Shade.nvim",
 			event = "WinLeave",
@@ -255,13 +255,13 @@ return packer.startup({
 			end,
 		})
 
-		use({
-			"simrat39/symbols-outline.nvim",
-			after = "trouble.nvim",
-			config = function()
-				require("cfg.outline")
-			end,
-		})
+		-- use({
+		-- 	"simrat39/symbols-outline.nvim",
+		-- 	after = "trouble.nvim",
+		-- 	config = function()
+		-- 		require("cfg.outline")
+		-- 	end,
+		-- })
 
 		-----------------------------------------------------------------------------------------------------------
 		-- UX
@@ -497,27 +497,27 @@ return packer.startup({
 			end,
 		})
 
-		use({
-			"nvim-pack/nvim-spectre",
-			event = "CursorHold",
-			config = function()
-				require("cfg.spectre")
-			end,
-		})
-
-		use({
-			"mfussenegger/nvim-dap",
-			after = "nvim-spectre",
-		})
-
-		use({
-			"mfussenegger/nvim-dap-python",
-			after = "nvim-dap",
-		})
+		-- use({
+		-- 	"nvim-pack/nvim-spectre",
+		-- 	event = "CursorHold",
+		-- 	config = function()
+		-- 		require("cfg.spectre")
+		-- 	end,
+		-- })
+		--
+		-- use({
+		-- 	"mfussenegger/nvim-dap",
+		-- 	after = "nvim-spectre",
+		-- })
+		--
+		-- use({
+		-- 	"mfussenegger/nvim-dap-python",
+		-- 	after = "nvim-dap",
+		-- })
 
 		use({
 			"folke/lsp-colors.nvim",
-			after = "nvim-dap",
+			after = "harpoon",
 		})
 
 		use({
@@ -527,6 +527,14 @@ return packer.startup({
 			end,
 			event = "CursorHold",
 		})
+
+		-- use({
+		-- 	"glacambre/firenvim",
+		-- 	event = "CursorHold",
+		-- 	run = function()
+		-- 		vim.fn["firenvim#install"](0)
+		-- 	end,
+		-- })
 
 		use({
 			"folke/which-key.nvim",
