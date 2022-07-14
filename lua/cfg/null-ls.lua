@@ -8,18 +8,18 @@ local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
-local lsp_formatting = function(bufnr)
-	vim.lsp.buf.format({
-		filter = function(clients)
-			-- filter out clients that you don't want to use
-			return vim.tbl_filter(function(client)
-				return client.name ~= "tsserver"
-			end, clients)
-		end,
-		bufnr = bufnr,
-	})
-end
-
+-- local lsp_formatting = function(bufnr)
+-- 	vim.lsp.buf.format({
+-- 		filter = function(clients)
+-- 			-- filter out clients that you don't want to use
+-- 			return vim.tbl_filter(function(client)
+-- 				return client.name ~= "tsserver"
+-- 			end, clients)
+-- 		end,
+-- 		bufnr = bufnr,
+-- 	})
+-- end
+--
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 null_ls.setup({
@@ -37,7 +37,7 @@ null_ls.setup({
 				group = augroup,
 				buffer = bufnr,
 				callback = function()
-					lsp_formatting(bufnr)
+					vim.lsp.buf.format({ bufnr = bufnr }) 
 				end,
 			})
 		end
