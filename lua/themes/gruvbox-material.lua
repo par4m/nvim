@@ -1,15 +1,9 @@
-vim.g.gruvbox_material_enable_italic = 0
-vim.g.gruvbox_material_disable_italic_comment = 0
-vim.g.gruvbox_material_enable_bold = 1
-vim.g.gruvbox_material_menu_selection_background = 'blue'
+vim.o.background = "light"
+vim.g.gruvbox_material_background = "soft"
 vim.g.gruvbox_material_diagnostic_line_highlight = 1
-vim.g.gruvbox_material_current_word = 'bold'
-vim.g.gruvbox_material_statusline_style = 'original'
-vim.g.gruvbox_material_transparent_background = 1
-vim.g.gruvbox_material_sign_column_background = 'none'
+vim.g.gruvbox_material_sign_column_background = "none"
 vim.g.gruvbox_material_diagnostic_text_highlight = 1
 vim.g.gruvbox_material_diagnostic_line_highlight = 1
-vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
 vim.g.gruvbox_material_better_performance = 1
 
 -- Custom highlights
@@ -39,7 +33,6 @@ vim.cmd([[
 " autocmd ColorScheme * highlight NvimTreeImageFile guifg=#d4be98
 " augroup end
 ]])
-
 
 -- vim.cmd([[
 -- function! s:gruvbox_material_custom() abort
@@ -79,4 +72,4 @@ vim.cmd([[
 
 -- vim.cmd("hi WinSeparator guibg=#282828") --change background color of window seperator
 
-vim.cmd('colorscheme gruvbox-material')
+vim.cmd("colorscheme gruvbox-material")
