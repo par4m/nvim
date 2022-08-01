@@ -168,11 +168,15 @@ return packer.startup({
 
 		-- UI
 		-- use("eddyekofo94/gruvbox-flat.nvim") --colorscheme
-		use("sainnhe/gruvbox-material")
+		-- use("sainnhe/gruvbox-material") --colorscheme
+		-- use("shaunsingh/nord.nvim") --colorscheme
+		-- use("Everblush/everblush.nvim") --colorscheme
+		use("shaunsingh/nord.nvim") --colorscheme
+
 		use({ -- lua `fork` of vim-web-devicons for neovim
 			"kyazdani42/nvim-web-devicons",
 			event = "BufRead",
-			after = "gruvbox-material",
+			after = "nord.nvim", -- change this for theme
 			config = function()
 				require("cfg.icons")
 			end,

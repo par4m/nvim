@@ -10,7 +10,9 @@ require("user.keymaps")
 require("user.plugins") -- manage plugins
 
 -- Theme --
-require("themes.gruvbox-material") -- change theme
+-- require("themes.gruvbox-material") -- change theme
+require("themes.nord") -- change theme
+-- require("themes.everblush") -- change theme
 -- require "user.colorscheme" -- colorscheme protected call
 
 -- LSP and Completion --

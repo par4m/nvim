@@ -1,3 +1,4 @@
+-- Needed for some themes not every
 local nvim_tree_shift = {
 	function()
 		return string.rep(" ", require("nvim-tree").config.view.width - 1)
@@ -5,16 +6,18 @@ local nvim_tree_shift = {
 	cond = require("nvim-tree.view").is_visible,
 	color = "Normal",
 }
--- require'lualine'.setup {
---   sections = {
---      lualine_a = { nvim_tree_shift, "mode" }
---   }
--- }
+
+--
+-- require("lualine").setup({
+-- 	sections = {
+-- 		lualine_a = { nvim_tree_shift, "mode" },
+-- 	},
+-- })
 
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = custom_lualine,
+		theme = custom_lualine, -- change for colorscheme
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "packer", "TelescopePrompt" },
@@ -23,6 +26,7 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = { nvim_tree_shift, "mode" },
+		-- lualine_a = { "mode" },
 		lualine_b = { "diff", "diagnostics" },
 		lualine_c = { "filename" },
 		lualine_x = { "encoding", "fileformat", "filetype" },
