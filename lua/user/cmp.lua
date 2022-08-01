@@ -133,12 +133,12 @@ cmp.setup({
 	-- }
 	window = {
 		documentation = {
-			border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-			winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			-- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+			-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
 		},
 		completion = {
-			border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-			winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			-- border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+			-- winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
 			-- col-offset = 0,
 			-- side_padding = 1,
 		},

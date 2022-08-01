@@ -171,7 +171,8 @@ return packer.startup({
 		-- use("sainnhe/gruvbox-material") --colorscheme
 		-- use("shaunsingh/nord.nvim") --colorscheme
 		-- use("Everblush/everblush.nvim") --colorscheme
-		use("shaunsingh/nord.nvim") --colorscheme
+		-- use("shaunsingh/nord.nvim") --colorscheme
+		use("shaunsingh/nord.nvim")
 
 		use({ -- lua `fork` of vim-web-devicons for neovim
 			"kyazdani42/nvim-web-devicons",
