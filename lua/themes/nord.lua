@@ -9,6 +9,9 @@ vim.g.nord_uniform_diff_background = true
 require("nord").set()
 vim.cmd("highlight NvimTreeStatusLineNC guibg=nvim_treebg guifg=nvim_treebg")
 vim.cmd("highlight StatusLine guibg=nvim_treebg")
+vim.cmd("highlight VertSplit guifg=#3B4252")
+vim.cmd("highlight NvimTreeWinSeparator guifg=#2E3440")
+
 -- vim.cmd("highlight NvimTreeStatusLine")
 
 -- StatusLine

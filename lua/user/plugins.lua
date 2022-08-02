@@ -76,18 +76,23 @@ return packer.startup({
 			"b0o/schemastore.nvim",
 			after = "cmp-nvim-lsp",
 		})
+		use({
+
+			"williamboman/mason.nvim",
+			after = "schemastore.nvim",
+		})
 
 		use({
 			{
-				"williamboman/nvim-lsp-installer",
-				after = "schemastore.nvim",
+				"williamboman/mason-lspconfig.nvim",
+				after = "mason.nvim",
 			},
 			{
 				"neovim/nvim-lspconfig",
 				config = function()
 					require("user.lsp")
 				end,
-				after = "nvim-lsp-installer",
+				after = "mason-lspconfig.nvim",
 			},
 		})
 
