@@ -1,9 +1,24 @@
 local fn = vim.fn
 local util = require("packer.util")
 -- Automatically install packer
+-- local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+-- if fn.empty(fn.glob(install_path)) > 0 then
+-- 	PACKER_BOOTSTRAP = fn.system({
+-- 		"git",
+-- 		"clone",
+-- 		"--depth",
+-- 		"1",
+-- 		"https://github.com/wbthomason/packer.nvim",
+-- 		install_path,
+-- 	})
+-- 	print("Installing packer close and reopen Neovim...")
+-- 	-- vim.cmd [[packadd packer.nvim]]
+-- 	require("packer").packadd = "packer.nvim"
+-- end
+--
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system({
+	packer_bootstrap = fn.system({
 		"git",
 		"clone",
 		"--depth",
@@ -11,9 +26,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 		"https://github.com/wbthomason/packer.nvim",
 		install_path,
 	})
-	print("Installing packer close and reopen Neovim...")
-	-- vim.cmd [[packadd packer.nvim]]
-	require("packer").packadd = "packer.nvim"
+	vim.cmd([[packadd packer.nvim]])
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -123,7 +136,7 @@ return packer.startup({
 		})
 
 		use({
-			"tami5/lspsaga.nvim",
+			"glepnir/lspsaga.nvim",
 			after = "lsp_signature.nvim",
 			config = function()
 				require("cfg.saga")
@@ -553,6 +566,10 @@ return packer.startup({
 				require("cfg.whichkey")
 			end,
 		})
+		-- Packer Bootstrap
+		if packer_bootstrap then
+			require("packer").sync()
+		end
 	end,
 	config = {
 		snapshot_path = util.join_paths(fn.stdpath("config"), "snapshots"),
