@@ -44,3 +44,10 @@ require("lualine").setup({
 	tabline = {},
 	-- extensions = { "nvim-tree" },
 })
+
+vim.cmd("highlight lualine_c_normal guibg=#2E3440")
+vim.cmd("highlight lualine_x_filetype_DevIconLua_normal guibg=#2E3440")
+vim.cmd("highlight lualine_x_filetype_DevIconLua_inactive guibg=#2E3440")
+vim.cmd("highlight lualine_x_filetype_DevIconLua_command guibg=#2E3440")
+vim.cmd("highlight lualine_x_filetype_DevIconLua_insert guibg=#2E3440")
+vim.cmd("highlight lualine_x_filetype_DevIconLua_visual guibg=#2E3440")
