@@ -21,3 +21,6 @@ require("themes.nord") -- change theme
 
 -- Plugin Configs --
 -- require "cfg.telescope" -- fuzzy finder
+--
+--
+--

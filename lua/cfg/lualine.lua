@@ -1,7 +1,7 @@
 -- Needed for some themes not every
 local nvim_tree_shift = {
 	function()
-		return string.rep(" ", require("nvim-tree").config.view.width - 1)
+		return string.rep(" ", require("nvim-tree").config.view.width - 100)
 	end,
 	cond = require("nvim-tree.view").is_visible,
 	color = "Normal",
