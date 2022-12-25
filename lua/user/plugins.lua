@@ -294,7 +294,12 @@ return packer.startup({
 			after = "nvim-lspconfig",
 		})
 
-		use("nathom/filetype.nvim") -- A faster version of filetype.vim
+		--[[ use({ ]]
+		--[[ 	"nathom/filetype.nvim", ]]
+		--[[ 	config = function() ]]
+		--[[ 		require("cfg.filetype") ]]
+		--[[ 	end, ]]
+		--[[ }) -- A faster version of filetype.vim ]]
 		use("lewis6991/impatient.nvim")
 
 		-- use({

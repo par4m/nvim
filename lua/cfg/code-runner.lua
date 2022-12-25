@@ -10,7 +10,7 @@ require("code_runner").setup({
 		python = "python3 -u",
 		typescript = "deno run",
 		rust = "cd $dir && rustc $fileName && $dir/$fileNameWithoutExt",
-		cpp = "cd $dir && g++ -std=c++14 $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+		cpp = "cd $dir && g++ -std=c++14 $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt < inp.txt",
 		c = "cd $dir && gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
 	},
 	project = {

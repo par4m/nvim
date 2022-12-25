@@ -3,9 +3,7 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
-local k = vim.api.nvim_set_keymap
-
---Remap space as leader key
+local k = vim.api.nvim_set_keymap -- Remap space as leader key
 k("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -99,7 +97,7 @@ k("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- Use F7 to run prompt command
 -- k("n", "<F7>", ":w<CR>:VimuxPromptCommand<cr>", opts)
 -- use space + b to run last command
-k("n", "<leader>b", ":w<CR>:VimuxRunLastCommand<cr>", opts)
+-- k("n", "<leader>b", ":w<CR>:VimuxRunLastCommand<cr>", opts)
 
 -- Duck --
 k("n", "<leader>;", ':lua require("duck").hatch()<CR>', opts)
@@ -108,3 +106,6 @@ k("n", "<leader>.", ':lua require("duck").cook()<CR>', opts)
 -- LspSaga Scroll --
 k("n", "<C-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
 k("n", "<C-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
+
+-- Code Runner --
+k("n", "<leader>b", ":w<CR>:RunCode<cr>", opts)
