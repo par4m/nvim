@@ -42,7 +42,7 @@ require("lualine").setup({
 		lualine_z = {},
 	},
 	tabline = {},
-	-- extensions = { "nvim-tree" },
+	extensions = { "nvim-tree" },
 })
 
 vim.cmd("highlight lualine_c_normal guibg=#2E3440")

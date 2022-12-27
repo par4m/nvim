@@ -571,6 +571,18 @@ return packer.startup({
 				require("cfg.whichkey")
 			end,
 		})
+
+		use({
+			"turbio/bracey.vim",
+			cmd = {
+				"Bracey",
+				"BraceyStop",
+				"BraceyReload",
+				config = function()
+					require("cfg.bracey")
+				end,
+			},
+		})
 		-- Packer Bootstrap
 		if packer_bootstrap then
 			require("packer").sync()

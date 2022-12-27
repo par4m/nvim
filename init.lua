@@ -23,4 +23,4 @@ require("themes.nord") -- change theme
 -- require "cfg.telescope" -- fuzzy finder
 --
 --
---
+vim.api.nvim_create_autocmd("CursorHold", { command = "set laststatus=3" })
