@@ -110,17 +110,17 @@ return packer.startup({
 		})
 
 		use({
-			"hrsh7th/cmp-cmdline",
-			after = "nvim-lspconfig",
-		}) -- cmdline completions
-
-		use({
 			"hrsh7th/nvim-cmp",
-			after = "cmp-cmdline",
+			after = "nvim-lspconfig",
 			config = function()
 				require("user.cmp")
 			end,
 		}) -- The completion plugin
+
+		use({
+			"hrsh7th/cmp-cmdline",
+			after = "nvim-cmp",
+		}) -- cmdline completions
 
 		use({ "saadparwaiz1/cmp_luasnip", after = "nvim-cmp" }) -- snippet completions
 		use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }) -- nvim-cmp source for neovim Lua API.
