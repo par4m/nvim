@@ -157,7 +157,9 @@ return packer.startup({
 		-- Autopairs
 		use({
 			"windwp/nvim-autopairs",
-			after = "null-ls.nvim",
+			--[[ after = "null-ls.nvim", ]]
+			event = "InsertCharPre",
+			after = "nvim-cmp",
 			config = function()
 				require("cfg.autopairs")
 			end,
