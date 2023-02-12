@@ -192,12 +192,13 @@ return packer.startup({
 		-- use("shaunsingh/nord.nvim") --colorscheme
 		-- use("Everblush/everblush.nvim") --colorscheme
 		-- use("shaunsingh/nord.nvim") --colorscheme
-		use("shaunsingh/nord.nvim")
+		--[[ use("shaunsingh/nord.nvim") ]]
+		use({ "catppuccin/nvim", as = "catppuccin" })
 
 		use({ -- lua `fork` of vim-web-devicons for neovim
 			"kyazdani42/nvim-web-devicons",
 			event = "BufRead",
-			after = "nord.nvim", -- change this for theme
+			after = "catppuccin", -- change this for theme
 			config = function()
 				require("cfg.icons")
 			end,
