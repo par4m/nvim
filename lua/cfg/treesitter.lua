@@ -15,6 +15,7 @@ configs.setup({
 		"latex",
 		"rust",
 		"toml",
+		"javascript",
 	},
 	sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
 	ignore_install = { "" }, -- List of parsers to ignore installing
@@ -33,6 +34,6 @@ configs.setup({
 	},
 	autotag = {
 		enable = true,
-		filetypes = { "html", "xml" },
+		filetypes = { "html", "xml", "tsx" },
 	},
 })

@@ -122,4 +122,5 @@ end
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 M.capabilities.offsetEncoding = { "utf-16" }
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 return M
