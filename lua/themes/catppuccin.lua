@@ -2,7 +2,7 @@ require("catppuccin").setup({
 	flavour = "frappe", -- latte, frappe, macchiato, mocha
 	background = { -- :h background
 		light = "latte",
-		dark = "frappe",
+		dark = "mocha",
 	},
 	transparent_background = false,
 	show_end_of_buffer = false, -- show the '~' characters after the end of buffers
@@ -28,11 +28,16 @@ require("catppuccin").setup({
 		types = {},
 		operators = {},
 	},
-	color_overrides = { all = {
-		base = "#2e3440",
-		mantle = "#2e3440",
-		crust = "#2e3440",
-	} },
+	color_overrides = {
+		all = {
+			--[[ base = "#2e3440", ]]
+			--[[ mantle = "#2e3440", ]]
+			--[[ crust = "#2e3440", ]]
+			base = "#1e1e2e",
+			mantle = "#1e1e2e",
+			crust = "#1e1e2e",
+		},
+	},
 	custom_highlights = {},
 	integrations = {
 		cmp = true,
@@ -52,5 +57,7 @@ vim.cmd.colorscheme("catppuccin")
 vim.cmd("highlight NvimTreeStatusLineNC guibg=nvim_treebg guifg=nvim_treebg")
 vim.cmd("highlight StatusLine guibg=nvim_treebg")
 vim.cmd("highlight VertSplit guifg=#3B4252")
-vim.cmd("highlight NvimTreeWinSeparator guifg=#2E3440")
-vim.cmd("highlight lualine_c_normal guifg=#2E3440")
+--[[ vim.cmd("highlight NvimTreeWinSeparator guifg=#2E3440")  ]]
+vim.cmd("highlight NvimTreeWinSeparator guifg=#1e1e2e")
+--[[ vim.cmd("highlight lualine_c_normal guifg=#2E3440") ]]
+vim.cmd("highlight lualine_c_normal guifg=#1e1e2e")
