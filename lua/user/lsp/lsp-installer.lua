@@ -15,7 +15,7 @@ local lspconfig = require("lspconfig")
 
 local servers = {
 	"jsonls",
-	"sumneko_lua",
+	"lua_ls",
 	"pyright",
 	"clangd",
 	"cmake",
@@ -25,6 +25,7 @@ local servers = {
 	"cssls",
 	"html",
 	"tsserver",
+	"emmet_ls",
 }
 
 lsp_installer.setup({

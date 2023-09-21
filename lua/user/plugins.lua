@@ -109,6 +109,15 @@ return packer.startup({
 			},
 		})
 
+		--[[ Rust Tools ]]
+		use({
+			"simrat39/rust-tools.nvim",
+			after = "nvim-lspconfig",
+			config = function()
+				require("cfg.rust-tools")
+			end,
+		})
+
 		use({
 			"hrsh7th/nvim-cmp",
 			after = "nvim-lspconfig",
@@ -136,7 +145,7 @@ return packer.startup({
 		})
 
 		use({
-			"glepnir/lspsaga.nvim",
+			"nvimdev/lspsaga.nvim",
 			after = "lsp_signature.nvim",
 			config = function()
 				require("cfg.saga")
@@ -254,7 +263,7 @@ return packer.startup({
 
 		-- Nvim Colorizer
 		use({
-			"norcalli/nvim-colorizer.lua",
+			"NvChad/nvim-colorizer.lua",
 			--		event = "BufRead",
 			after = "indent-blankline.nvim",
 			config = function()
@@ -586,6 +595,7 @@ return packer.startup({
 				end,
 			},
 		})
+
 		-- Packer Bootstrap
 		if packer_bootstrap then
 			require("packer").sync()

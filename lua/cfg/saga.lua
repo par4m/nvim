@@ -1,5 +1,5 @@
 local saga = require("lspsaga")
-saga.init_lsp_saga({
+saga.setup({
 	-- your configuration
 	-- Options with default value
 	-- "single" | "double" | "rounded" | "bold" | "plus"

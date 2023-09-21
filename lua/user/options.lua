@@ -55,8 +55,10 @@ o.shadafile = ""
 -- }
 o.fillchars = {
 	fold = " ", -- remove folding chars
-	-- vert = " ", -- set vsplit chars
+	--[[ vert = " ", -- set vsplit chars ]]
 	eob = " ", -- suppress ~ at EndOfBuffer
+	vertleft = " ",
+	vertright = " ",
 }
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd("set re=0")

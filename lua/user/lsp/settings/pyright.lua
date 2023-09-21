@@ -1,10 +1,15 @@
 return {
 	settings = {
-
-    python = {
-      analysis = {
-        typeCheckingMode = "off"
-      }
-    }
+		python = {
+			analysis = {
+				useLibraryCodeForTypes = true,
+				diagnosticSeverityOverrides = {
+					reportGeneralTypeIssues = "none",
+					reportOptionalMemberAccess = "none",
+					reportOptionalSubscript = "none",
+					reportPrivateImportUsage = "none",
+				},
+			},
+		},
 	},
 }
