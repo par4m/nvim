@@ -30,6 +30,7 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.clang_format,
 		formatting.shfmt,
+		formatting.rustfmt,
 		-- diagnostics.flake8
 	},
 	on_attach = function(client, bufnr)

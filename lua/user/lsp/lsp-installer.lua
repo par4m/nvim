@@ -1,46 +1,46 @@
 require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-		},
-	},
+  ui = {
+    icons = {
+      package_installed = "✓",
+    },
+  },
 })
 
 local status_ok, lsp_installer = pcall(require, "mason-lspconfig")
 if not status_ok then
-	return
+  return
 end
 
 local lspconfig = require("lspconfig")
 
 local servers = {
-	"jsonls",
-	"lua_ls",
-	"pyright",
-	"clangd",
-	"cmake",
-	"bashls",
-	"rust_analyzer",
-	"awk_ls",
-	"cssls",
-	"html",
-	"tsserver",
-	"emmet_ls",
+  "jsonls",
+  "lua_ls",
+  "pyright",
+  "clangd",
+  "cmake",
+  "bashls",
+  "rust_analyzer",
+  "awk_ls",
+  "cssls",
+  "html",
+  "tsserver",
+  "emmet_ls",
 }
 
 lsp_installer.setup({
-	ensure_installed = servers,
-	automatic_installation = true,
+  ensure_installed = servers,
+  automatic_installation = true,
 })
 
 for _, server in pairs(servers) do
-	local opts = {
-		on_attach = require("user.lsp.handlers").on_attach,
-		capabilities = require("user.lsp.handlers").capabilities,
-	}
-	local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
-	if has_custom_opts then
-		opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
-	end
-	lspconfig[server].setup(opts)
+  local opts = {
+    on_attach = require("user.lsp.handlers").on_attach,
+    capabilities = require("user.lsp.handlers").capabilities,
+  }
+  local has_custom_opts, server_custom_opts = pcall(require, "user.lsp.settings." .. server)
+  if has_custom_opts then
+    opts = vim.tbl_deep_extend("force", server_custom_opts, opts)
+  end
+  lspconfig[server].setup(opts)
 end
