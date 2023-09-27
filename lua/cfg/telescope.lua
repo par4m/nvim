@@ -151,10 +151,12 @@ telescope.setup({
 })
 
 -- You may skip explicitly loading extensions (they will then be lazy-loaded), but tab completions will not be available right away.
--- telescope.load_extension("fzf")
--- telescope.load_extension("zoxide")
--- telescope.load_extension("luasnip")
--- telescope.load_extension("media_files") -- only works on linux
--- telescope.load_extension("frecency") -- only works on linux
--- telescope.load_extension("file_browser") -- only works on linux
+telescope.load_extension("fzf")
+telescope.load_extension("zoxide")
+telescope.load_extension("luasnip")
+--[[ telescope.load_extension("media_files") ]]
+telescope.load_extension("frecency")
+telescope.load_extension("file_browser")
+telescope.load_extension("project")
+telescope.load_extension("repo")
 --
