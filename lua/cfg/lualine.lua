@@ -17,7 +17,8 @@ local nvim_tree_shift = {
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = custom_lualine, -- change for colorscheme
+		--[[ theme = custom_lualine, -- change for colorscheme ]]
+		theme = catppuccin, -- change for colorscheme
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "packer", "TelescopePrompt" },
@@ -51,9 +52,9 @@ require("lualine").setup({
 --[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_command guibg=#2E3440") ]]
 --[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_insert guibg=#2E3440") ]]
 --[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_visual guibg=#2E3440") ]]
-vim.cmd("highlight lualine_c_normal guibg=#1e1e2e")
-vim.cmd("highlight lualine_x_filetype_DevIconLua_normal guibg=#1e1e2e")
-vim.cmd("highlight lualine_x_filetype_DevIconLua_inactive guibg=#1e1e2e")
-vim.cmd("highlight lualine_x_filetype_DevIconLua_command guibg=#1e1e2e")
-vim.cmd("highlight lualine_x_filetype_DevIconLua_insert guibg=#1e1e2e")
-vim.cmd("highlight lualine_x_filetype_DevIconLua_visual guibg=#1e1e2e")
+--[[ vim.cmd("highlight lualine_c_normal guibg=#1e1e2e") ]]
+--[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_normal guibg=#1e1e2e") ]]
+--[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_inactive guibg=#1e1e2e") ]]
+--[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_command guibg=#1e1e2e") ]]
+--[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_insert guibg=#1e1e2e") ]]
+--[[ vim.cmd("highlight lualine_x_filetype_DevIconLua_visual guibg=#1e1e2e") ]]

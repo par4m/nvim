@@ -112,11 +112,16 @@ return packer.startup({
 		--[[ Rust Tools ]]
 		use({
 			"simrat39/rust-tools.nvim",
-			after = "nvim-lspconfig",
+			--[[ after = "nvim-lspconfig", ]]
+			ft = { "rust", "toml" },
 			config = function()
 				require("cfg.rust-tools")
 			end,
 		})
+
+		-- rust babyyyyyyy
+		use({ "mfussenegger/nvim-dap", after = "rust-tools.nvim" })
+		use({ "rcarriga/nvim-dap-ui", after = "rust-tools.nvim" })
 
 		use({
 			"hrsh7th/nvim-cmp",
@@ -135,6 +140,8 @@ return packer.startup({
 		use({ "hrsh7th/cmp-nvim-lua", after = "cmp_luasnip" }) -- nvim-cmp source for neovim Lua API.
 		use({ "hrsh7th/cmp-buffer", after = "cmp-nvim-lua" }) -- buffer completions
 		use({ "hrsh7th/cmp-path", after = "cmp-buffer" }) -- path completions
+		use({ "hrsh7th/cmp-nvim-lsp-document-symbol", after = "cmp-path" }) -- path completions
+		use({ "hrsh7th/cmp-nvim-lsp-signature-help", after = "cmp-path" }) -- path completions
 
 		use({
 			"ray-x/lsp_signature.nvim",
