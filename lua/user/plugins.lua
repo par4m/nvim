@@ -111,17 +111,17 @@ return packer.startup({
 
     --[[ Rust Tools ]]
     use({
-      "simrat39/rust-tools.nvim",
+      "mrcjkb/rustaceanvim",
       --[[ after = "nvim-lspconfig", ]]
-      ft = { "rust", "toml" },
+      --[[ ft = { "rust", "toml" }, ]]
       config = function()
         require("cfg.rust-tools")
       end,
     })
 
     -- rust babyyyyyyy
-    use({ "mfussenegger/nvim-dap", after = "rust-tools.nvim" })
-    use({ "rcarriga/nvim-dap-ui", after = "rust-tools.nvim" })
+    --[[ use({ "mfussenegger/nvim-dap", after = "rust-tools.nvim" }) ]]
+    --[[ use({ "rcarriga/nvim-dap-ui", after = "rust-tools.nvim" }) ]]
 
     use({
       "hrsh7th/nvim-cmp",
@@ -247,20 +247,20 @@ return packer.startup({
       end,
     })
 
-    use({
-      "andreadev-it/Shade.nvim", -- fork of sunjon/Shade with disabled filetypes
-      -- "sunjon/Shade.nvim",
-      event = "WinLeave",
-      --	after = "lualine.nvim",
-      config = function()
-        require("cfg.shade")
-      end,
-    })
+    --[[ use({ ]]
+    --[[   "andreadev-it/Shade.nvim", -- fork of sunjon/Shade with disabled filetypes ]]
+    --[[   -- "sunjon/Shade.nvim", ]]
+    --[[   event = "WinLeave", ]]
+    --[[   --	after = "lualine.nvim", ]]
+    --[[   config = function() ]]
+    --[[     require("cfg.shade") ]]
+    --[[   end, ]]
+    --[[ }) ]]
 
     -- IndentLine
     use({
       "lukas-reineke/indent-blankline.nvim",
-      as = "ibl",
+      --[[ as = "ibl", ]]
       -- event = "BufRead",
       -- cmd = "IndentBlanklineToggle",
       event = "CursorHold",
@@ -273,7 +273,7 @@ return packer.startup({
     use({
       "NvChad/nvim-colorizer.lua",
       --		event = "BufRead",
-      after = "ibl",
+      --[[ after = "indent-blankline", ]]
       config = function()
         require("cfg.colorizer")
       end,
@@ -598,9 +598,6 @@ return packer.startup({
         "Bracey",
         "BraceyStop",
         "BraceyReload",
-        config = function()
-          require("cfg.bracey")
-        end,
       },
     })
 

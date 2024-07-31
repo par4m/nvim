@@ -14,7 +14,9 @@ M.setup = function()
   end
 
   local config = {
+    inlay_hint = true,
     -- disable virtual text
+
     virtual_text = false,
     -- show signs
     signs = {
@@ -73,7 +75,7 @@ local function lsp_keymaps(bufnr)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-  vim.api.nvim_buf_set_keymap(-- Show Diagnostic in float window (gl)
+  vim.api.nvim_buf_set_keymap( -- Show Diagnostic in float window (gl)
     bufnr,
     "n",
     "gl",
