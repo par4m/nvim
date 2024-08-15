@@ -6,7 +6,7 @@ return {
     -- load the colorscheme here
     vim.cmd([[colorscheme kanagawa-dragon]])
     vim.cmd([[set statuscolumn=""]])
-    vim.cmd([[set signcolumn=number]])
+    -- vim.cmd([[set signcolumn=number]])
     vim.cmd([[set foldmethod=manual]])
   end,
 }

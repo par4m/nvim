@@ -12,7 +12,7 @@ return {
       ---@type vim.diagnostic.Opts
       diagnostics = {
         underline = true,
-        update_in_insert = false,
+        update_in_insert = true,
         virtual_text = false,
         -- {
         -- spacing = 4,
