@@ -49,6 +49,7 @@ return {
       focus = false,
       filetype = {
         cpp = "cd $dir && g++ -std=c++14 $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt < $dir/input.txt",
+        go = "cd $dir && go run $fileName",
       },
     },
   },
