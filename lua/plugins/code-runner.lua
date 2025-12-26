@@ -6,7 +6,7 @@ return {
       -- choose default mode (valid term, tab, float, toggle, vimux)
       mode = "term",
       -- add hot reload
-      hot_reload = true,
+      hot_reload = false,
       -- Focus on runner window(only works on toggle, term and tab mode)
       focus = true,
       -- startinsert (see ':h inserting-ex')
@@ -49,7 +49,10 @@ return {
       focus = false,
       filetype = {
         cpp = "cd $dir && g++ -std=c++14 $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt < $dir/input.txt",
-        go = "cd $dir && go run $fileName",
+        go = "cd $dir && go run main.go",
+        python = "cd $dir && python3 $fileName",
+        -- javascript = "cd $dir && node main_test.js",
+        -- rust = "cargo run --quiet",
       },
     },
   },
